@@ -62,5 +62,10 @@ namespace DESAFIO_API.Repository
             cliente.Nome = dto.Nome;
             AtualizarCliente(cliente);
         }
+
+        public List<Cliente> Listar()
+        {
+           return _context.Clientes.ToList(); 
+        }
     }
 }

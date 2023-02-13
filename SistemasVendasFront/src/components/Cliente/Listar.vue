@@ -1,0 +1,76 @@
+<template>
+    <div class="container">
+        <h3>Listagem de Cliente</h3>
+        <div class="col-7">
+            <hr/>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(cliente, index) in clientes" :key ="index">
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nome }}</td>
+                        <td>{{ cliente.login }}</td>
+                        <td>
+                            <button class="btn btn-success" @click="editarCliente(cliente.id)">Editar</button>
+                            <button class="btn btn-danger" @click="excluirCliente(cliente)">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<script>
+    import ClienteDataServices from '../../services/ClienteDataServices';
+    export default {
+        data() {
+            return {
+                clientes: []
+            }
+        },
+        methods: {
+            obterClientes() {
+                ClienteDataServices.listar()
+                                    .then(response =>
+                                    {
+                                        this.clientes = response.data;
+                                    })
+            },
+            editarCliente(id) {
+                this.$router.push('/cliente/' + id);
+            },
+            async excluirCliente(cliente) {
+                if(confirm(`Tem certeza que deseja excluir o cliente ${cliente.nome}?`)) {
+                    await ClienteDataServices.deletar(cliente.id);
+                    this.obterClientes();
+                }
+            }
+        },
+        mounted() {
+            this.obterClientes();
+        }
+    }
+</script>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.container{
+    border: 1px solid black;
+    margin: 5px auto;
+    padding: 5%;
+}
+</style>

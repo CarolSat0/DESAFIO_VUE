@@ -59,5 +59,10 @@ namespace DESAFIO_API.Repository
             itempedido.Valor = dto.Valor;
             AtualizarItemPedido(itempedido);
         }
+
+        public List<ItemPedido> Listar()
+        {
+           return _context.ItemPedidos.ToList(); 
+        }
     }
 }

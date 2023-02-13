@@ -53,5 +53,10 @@ namespace DESAFIO_API.Repository
                                          .FirstOrDefault(x => x.Id == id);
             return pedido;
         }
+
+        public List<Pedido> Listar()
+        {
+           return _context.Pedidos.ToList(); 
+        }
     }
 }

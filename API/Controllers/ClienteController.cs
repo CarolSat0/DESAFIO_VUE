@@ -106,5 +106,12 @@ namespace DESAFIO_API.Controllers
                 return NotFound(new { Mensagem = "Cliente não encontrado"});
             }
         }
+
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var clientes = _repository.Listar();
+            return Ok(clientes);
+        }
     }
 }

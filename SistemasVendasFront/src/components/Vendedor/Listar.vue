@@ -72,13 +72,5 @@
     border: 1px solid black;
     margin: 5px auto;
     padding: 5%;
-
-    /* width: 100vw;
-    height: 100vh;
-    background: #6C7A89;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
 }
 </style>

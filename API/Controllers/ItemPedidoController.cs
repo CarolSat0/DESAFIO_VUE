@@ -99,5 +99,12 @@ namespace DESAFIO_API.Controllers
                 return NotFound(new { Mensagem = "Item Pedido não encontrado"});
             }
         }
+
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var itempedidos = _repository.Listar();
+            return Ok(itempedidos);
+        }
     }
 }
