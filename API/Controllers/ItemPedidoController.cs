@@ -100,6 +100,20 @@ namespace DESAFIO_API.Controllers
             }
         }
 
+        [HttpGet("ObterPorIdPedido/{id}")]
+        public  IActionResult ObterPorIdPedido(int id)
+        {
+            var itempedido = _repository.ObterPorIdPedido(id);
+            return Ok(itempedido);
+        }
+
+        [HttpGet("ObterPorIdServico/{id}")]
+        public  IActionResult ObterPorIdServico(int id)
+        {
+            var itempedido = _repository.ObterPorIdServico(id);
+            return Ok(itempedido);
+        }
+
         [HttpGet("Listar")]
         public IActionResult Listar()
         {

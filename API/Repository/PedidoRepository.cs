@@ -48,10 +48,26 @@ namespace DESAFIO_API.Repository
 
         public Pedido ObterPorId(int id)
         {
-            var pedido = _context.Pedidos.Include(x => x.Vendedor)
+            var pedido = _context.Pedidos.Include(x => x.Vendedor) 
                                          .Include(x => x.Cliente)
                                          .FirstOrDefault(x => x.Id == id);
             return pedido;
+        }
+
+        public List<ObterPedidoDTO> ObterPorIdVendedor(int id)
+        {
+            var pedidos = _context.Pedidos.Where(x => x.VendedorId == id)
+                                          .Select(x => new ObterPedidoDTO(x))
+                                          .ToList();
+            return pedidos;
+        }
+
+        public List<ObterPedidoDTO> ObterPorIdCliente(int id)
+        {
+            var pedidos = _context.Pedidos.Where(x => x.ClienteId == id)
+                                          .Select(x => new ObterPedidoDTO(x))
+                                          .ToList();
+            return pedidos;
         }
 
         public List<Pedido> Listar()

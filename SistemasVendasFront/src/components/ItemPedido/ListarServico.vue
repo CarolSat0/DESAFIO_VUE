@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <h3>Listagem de Serviços</h3>
-        <div class="col-7 box">
+        <h3>Listagem de Serviços - Item pedido: {{ this.$route.params.id }}</h3>
+        <div class="col-10 box">
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -13,7 +13,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(servico, index) in servicos" :key ="index">
+                    <tr>
                         <td>{{ servico.id }}</td>
                         <td>{{ servico.nome }}</td>
                         <td>{{ servico.descricao }}</td>
@@ -34,15 +34,15 @@
     export default {
         data() {
             return {
-                servicos: []
+                servico: {}
             }
         },
         methods: {
-            obterServicos() {
-                ServicoDataServices.listar()
+            obterServicos(id) {
+                ServicoDataServices.obterPorId(id)
                                     .then(response =>
                                     {
-                                        this.servicos = response.data;
+                                        this.servico = response.data;
                                     })
             },
             editarServico(id) {
@@ -56,7 +56,7 @@
             }
         },
         mounted() {
-            this.obterServicos();
+            this.obterServicos(this.$route.params.id);
         }
     }
 </script>
@@ -76,14 +76,18 @@ h3{
 }
 
 .container{
-    width: 100%;
+    width: 50%;
     border: 1px solid #A6B1E1;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 2%;
 }
 
 .box{
     margin: 0 auto;
+}
+
+.btn{
+    margin-top: 5px;
 }
 
 .btn-editar{

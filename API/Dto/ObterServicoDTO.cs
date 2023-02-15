@@ -11,12 +11,14 @@ namespace DESAFIO_API.Dto
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public decimal Valor { get; set; }
 
         public ObterServicoDTO(Servico servico)
         {
             Id = servico.Id;
             Nome = servico.Nome;
             Descricao = servico.Descricao;
+            Valor = servico.Valor;
         }
     }
 }

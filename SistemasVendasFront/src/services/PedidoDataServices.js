@@ -16,6 +16,12 @@ class PedidoDataServices{
     async deletar(id){
         return await http.delete(`/pedido/${id}`);
     }
+    obterPorIdVendedor(id){
+        return http.get(`/pedido/ObterPorIdVendedor/${id}`);
+    }
+    obterPorIdCliente(id){
+        return http.get(`/pedido/ObterPorIdCliente/${id}`);
+    }
 }
 
 export default new PedidoDataServices();

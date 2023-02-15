@@ -2,12 +2,8 @@
 
 </script>
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
-
 <template>
-
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg">
 
 <div class="container-fluid dropdown">
 
@@ -19,6 +15,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="/" role="button">Inicio</a>
+      </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
@@ -28,7 +28,7 @@
           <router-link class="dropdown-item" to="/vendedor/listar">Listar</router-link>
         </ul>
       </li>
-<li class="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
           aria-expanded="false">Cliente</a>
         <ul class="dropdown-menu">
@@ -55,6 +55,15 @@
         </ul>
       </li>
 
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+          aria-expanded="false">Item Pedido</a>
+        <ul class="dropdown-menu">
+          <router-link class="dropdown-item" to="/itempedido/cadastrar">Cadastrar</router-link>
+          <router-link class="dropdown-item" to="/itempedido/listar">Listar</router-link>
+        </ul>
+      </li>
+
     </ul>
 
   </div>
@@ -65,5 +74,8 @@
 <router-view />  
 </template>
 
-<!-- <style scoped>
-</style> -->
+<style scoped>
+  .navbar{
+    background-color: #DCD6F7;
+  }
+</style>

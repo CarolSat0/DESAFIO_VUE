@@ -19,6 +19,10 @@ const routes = [
         component: () => import("./components/Vendedor/Atualizar.vue")
     },
     {
+        path: "/vendedor/ListarPedido/:id",
+        component: () => import("./components/vendedor/ListarPedido.vue")
+    },
+    {
         path: "/cliente/listar",
         component: () => import("./components/Cliente/Listar.vue")
     },
@@ -31,6 +35,10 @@ const routes = [
         component: () => import("./components/Cliente/AtualizarCliente.vue")
     },
     {
+        path: "/cliente/ListarPedido/:id",
+        component: () => import("./components/cliente/ListarPedido.vue")
+    },
+    {
         path: "/pedido/listar",
         component: () => import("./components/Pedido/Listar.vue")
     },
@@ -41,6 +49,10 @@ const routes = [
     {
         path: "/pedido/:id",
         component: () => import("./components/Pedido/AtualizarPedido.vue")
+    },
+    {
+        path: "/pedido/ListarItemPedido/:id",
+        component: () => import("./components/pedido/ListarItemPedido.vue")
     },
     {
         path: "/servico/listar",
@@ -62,6 +74,14 @@ const routes = [
         path: "/itempedido/:id",
         component: () => import("./components/ItemPedido/AtualizarItemPedido.vue")
     },
+    {
+        path: "/itempedido/listar",
+        component: () => import("./components/ItemPedido/Listar.vue")
+    },
+    {
+        path: "/itempedido/Listarservico/:id",
+        component: () => import("./components/ItemPedido/ListarServico.vue")
+    }
 
 ];
 const router = createRouter({

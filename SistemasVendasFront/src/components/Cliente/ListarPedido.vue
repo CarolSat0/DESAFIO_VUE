@@ -1,30 +1,27 @@
 <template>
     <div class="container">
-        <h3>Listagem de Pedidos</h3>
-        <div class="col-7 box">
-            <hr/>
+        <h3>Listagem de Pedidos - Cliente: {{ this.$route.params.id }}</h3>
+        <div class="col-10 box">
             <table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Data</th>
                     <th scope="col">Vendedor ID</th>
-                    <th scope="col">Cliente ID</th>
                   </tr>
                 </thead>
-                <tbody>
-                    <tr v-for="(pedido, index) in pedidos" :key ="index">
-                        <td>{{ pedido.id }}</td>
-                        <td>{{ pedido.data }}</td>
-                        <td>{{ pedido.vendedorId }}</td>
-                        <td>{{ pedido.clienteId }}</td>
-                        <td>
-                            <button class="btn btn-editar btn-outline-success" @click="editarPedido(pedido.id)">Editar</button>
-                            <button class="btn btn-excluir btn-outline-danger" @click="excluirPedido(pedido)">Excluir</button>
-                            <button class="btn btn-pedido btn-outline-info" @click="obterItemPedido(pedido.id)">Item Pedido</button>
-                        </td>
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr v-for="(pedido, index) in pedidos" :key ="index">
+                            <td>{{ pedido.id }}</td>
+                            <td>{{ pedido.data }}</td>
+                            <td>{{ pedido.vendedorId }}</td>
+                            <td>
+                                <button class="btn btn-editar btn-outline-success" @click="editarPedido(pedido.id)">Editar</button>
+                                <button class="btn btn-excluir btn-outline-danger" @click="excluirPedido(pedido)">Excluir</button>
+                                <button class="btn btn-pedido btn-outline-info" @click="obterItemPedido(pedido.id)">Item Pedido</button>
+                            </td>
+                        </tr>
+                    </tbody>
             </table>
         </div>
     </div>
@@ -32,7 +29,7 @@
 
 <script>
     import ItemPedidoDataServices from '../../services/ItemPedidoDataServices';
-import PedidoDataServices from '../../services/PedidoDataServices';
+    import PedidoDataServices from '../../services/PedidoDataServices';
     export default {
         data() {
             return {
@@ -40,8 +37,8 @@ import PedidoDataServices from '../../services/PedidoDataServices';
             }
         },
         methods: {
-            obterPedidos() {
-                PedidoDataServices.listar()
+            obterPedidos(id) {
+                PedidoDataServices.obterPorIdCliente(id)
                                     .then(response =>
                                     {
                                         this.pedidos = response.data;
@@ -62,7 +59,7 @@ import PedidoDataServices from '../../services/PedidoDataServices';
             }
         },
         mounted() {
-            this.obterPedidos();
+            this.obterPedidos(this.$route.params.id);
         }
     }
 </script>
@@ -82,9 +79,9 @@ h3{
 }
 
 .container{
-    width: 100%;
+    width: 50%;
     border: 1px solid #A6B1E1;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 2%;
 }
 

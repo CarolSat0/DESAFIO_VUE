@@ -60,6 +60,22 @@ namespace DESAFIO_API.Repository
             AtualizarItemPedido(itempedido);
         }
 
+        public List<ObterItemPedidoDTO> ObterPorIdPedido(int id)
+        {
+            var itempedidos = _context.ItemPedidos.Where(x => x.PedidoId == id)
+                                                  .Select(x => new ObterItemPedidoDTO(x))
+                                                  .ToList();
+            return itempedidos;
+        }
+
+        public List<ObterItemPedidoDTO> ObterPorIdServico(int id)
+        {
+            var itempedidos = _context.ItemPedidos.Where(x => x.ServicoId == id)
+                                                  .Select(x => new ObterItemPedidoDTO(x))
+                                                  .ToList();
+            return itempedidos;
+        }
+
         public List<ItemPedido> Listar()
         {
            return _context.ItemPedidos.ToList(); 

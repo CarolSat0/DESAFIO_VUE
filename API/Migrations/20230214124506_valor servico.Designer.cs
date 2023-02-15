@@ -4,6 +4,7 @@ using DESAFIO_API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DESAFIOAPI.Migrations
 {
     [DbContext(typeof(VendasContext))]
-    partial class VendasContextModelSnapshot : ModelSnapshot
+    [Migration("20230214124506_valor servico")]
+    partial class valorservico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,8 +121,8 @@ namespace DESAFIOAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Valor")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

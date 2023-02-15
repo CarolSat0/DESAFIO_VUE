@@ -16,6 +16,7 @@ class ServicoDataServices{
     async deletar(id){
         return await http.delete(`/servico/${id}`);
     }
+    
 }
 
 export default new ServicoDataServices();

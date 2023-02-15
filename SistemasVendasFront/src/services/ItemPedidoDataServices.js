@@ -1,9 +1,9 @@
 import http from "../http-common";
 
 class ItemPedidoDataServices{
-    // listar(){
-    //     return http.get('/itempedido/listar');
-    // }
+    listar(){
+        return http.get('/itempedido/listar');
+    }
     cadastrar(itempedido){
         return http.post('/itempedido', itempedido);
     }
@@ -15,6 +15,12 @@ class ItemPedidoDataServices{
     }
     async deletar(id){
         return await http.delete(`/itempedido/${id}`);
+    }
+    obterPorIdPedido(id){
+        return http.get(`/itempedido/ObterPorIdPedido/${id}`);
+    }
+    obterPorIdServico(id){
+        return http.get(`/itempedido/ObterPorIdServico/${id}`);
     }
 }
 

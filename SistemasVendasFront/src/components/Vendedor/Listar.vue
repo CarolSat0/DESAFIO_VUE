@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <h3>Listagem de vendedores</h3>
-        <div class="col-7">
-            <hr/>
+        <div class="col-7 box">
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -18,8 +17,9 @@
                         <td>{{ vendedor.nome }}</td>
                         <td>{{ vendedor.login }}</td>
                         <td>
-                            <button class="btn btn-success" @click="editarVendedor(vendedor.id)">Editar</button>
-                            <button class="btn btn-danger" @click="excluirVendedor(vendedor)">Excluir</button>
+                            <button class="btn btn-editar btn-outline-success" @click="editarVendedor(vendedor.id)">Editar</button>
+                            <button class="btn btn-excluir btn-outline-danger" @click="excluirVendedor(vendedor)">Excluir</button>
+                            <button class="btn btn-pedido btn-outline-info" @click="obterPedido(vendedor.id)">Pedidos</button>
                         </td>
                     </tr>
                 </tbody>
@@ -30,6 +30,7 @@
 
 <script>
     import VendedorDataServices from '../../services/VendedorDataServices';
+    import PedidoDataServices from '../../services/PedidoDataServices';
     export default {
         data() {
             return {
@@ -52,6 +53,10 @@
                     await VendedorDataServices.deletar(vendedor.id);
                     this.obterVendedores();
                 }
+            },
+            obterPedido(id){
+                PedidoDataServices.obterPorIdVendedor(id)
+                    this.$router.push('/vendedor/ListarPedido/' + id);//rota que ta no router
             }
         },
         mounted() {
@@ -60,7 +65,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
 *{
     margin: 0;
@@ -68,9 +73,41 @@
     border: 0;
 }
 
+h3{
+    background-color: #F4EEFF;
+    display: flex;
+    justify-content: center;
+}
+
 .container{
-    border: 1px solid black;
-    margin: 5px auto;
-    padding: 5%;
+    width: 100%;
+    border: 1px solid #A6B1E1;
+    margin: 10% auto;
+    padding: 2%;
+}
+
+.box{
+    margin: 0 auto;
+}
+
+.btn-editar{
+    border: 1px solid #28a745;
+    padding: 2%;
+}
+
+.btn-excluir{
+    border: 1px solid #dc3545;
+    padding: 2%;
+    margin-left: 5px;
+}
+
+.btn-pedido{
+    border: 1px solid #17a2b8;
+    padding: 2%;
+    margin-left: 5px;
+}
+
+.btn-pedido:hover{
+    color: #fff;
 }
 </style>

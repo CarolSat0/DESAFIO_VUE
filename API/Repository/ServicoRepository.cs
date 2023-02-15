@@ -62,6 +62,8 @@ namespace DESAFIO_API.Repository
             AtualizarServico(servico);
         }
 
+        
+
         public List<Servico> Listar()
         {
            return _context.Servicos.ToList(); 

@@ -11,6 +11,7 @@ namespace DESAFIO_API.Model
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public decimal Valor { get; set; }
 
         public Servico()
         {
@@ -21,12 +22,14 @@ namespace DESAFIO_API.Model
         {
             Nome = dto.Nome;
             Descricao = dto.Descricao;
+            Valor = dto.Valor;
         }
 
         public void MapearAtualizarServicoDTO(AtualizarServicoDTO dto)
         {
             Nome = dto.Nome;
             Descricao = dto.Descricao;
+            Valor = dto.Valor;
         }
     }
 }
